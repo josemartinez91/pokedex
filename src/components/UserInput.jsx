@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { changeName } from '../store/slices/user.slice';
 import { useDispatch } from 'react-redux';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import pokemonTrainer from './img/pokemon-trainer.jpg'
+import pokemon1 from './img/pokemon3.jpg'
 
 
 const UserInput = () => {
@@ -13,23 +14,32 @@ const UserInput = () => {
 
     const submit = (e) => {
         e.preventDefault()
-      
+
         dispatch(changeName(userName))
         navigate('/pokedex')
     }
 
     return (
         <div>
-            <h1>Hello Trainer!</h1>
-            <img src={pokemonTrainer} alt="" />
-            <p>Give me your name to start</p>
-            <form onSubmit={submit}>
-                <input
-                    type="text"
-                    value={userName}
-                    onChange={e => setUserName(e.target.value)} />
-                <button>Send</button>
-            </form>
+            
+            <div className='login-container'>
+                <div>
+                    <h1>Hello Trainer!</h1>
+                </div>
+                <div>
+                    <img src={pokemonTrainer} alt="" />
+                    <p>Give me your name to start</p>
+                </div>
+                <form onSubmit={submit}>
+                    <input
+                        type="text"
+                        value={userName}
+                        onChange={e => setUserName(e.target.value)} />
+                    <button><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+            
+
         </div>
     );
 };

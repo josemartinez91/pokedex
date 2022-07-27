@@ -4,6 +4,10 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 import PokemonItem from './PokemonItem';
 import { useNavigate } from 'react-router-dom'
+import pokedexImg from './img/pokedex.jpg'
+import nextImg from './img/next.png'
+import previousImg from './img/previous.png'
+import logout from './img/logout.png'
 
 const Pokedex = () => {
 
@@ -12,6 +16,13 @@ const Pokedex = () => {
     const [pokemonSearch, setPokemonSearch] = useState('')
     const navigate = useNavigate()
     const [types, setTypes] = useState([])
+    const [searchOption, setSearchOption] = useState(false)
+
+    const [page, setPage] = useState(1)
+    const lastIndex = page * 20
+    const firstIndex = lastIndex - 20
+    const pokemonsPagination = pokemons.slice(firstIndex, lastIndex)
+    const lastPage = Math.ceil(pokemons.length / 20)
 
     useEffect(() => {
         axios.get(' https://pokeapi.co/api/v2/pokemon/?offset=0&limit=600')
@@ -33,15 +44,13 @@ const Pokedex = () => {
         axios.get(e.target.value)
             .then(res => setPokemons(res.data.pokemon))
             .catch(error => console.log(error.response))
+        setPage(1)
+
     }
 
     console.log(pokemons)
 
-    const [page, setPage] = useState(1)
-    const lastIndex = page * 20
-    const firstIndex = lastIndex - 20
-    const pokemonsPagination = pokemons.slice(firstIndex, lastIndex)
-    const lastPage = Math.ceil(pokemons.length / 20)
+
     console.log(lastPage)
 
     const numbers = [];
@@ -56,25 +65,49 @@ const Pokedex = () => {
 
     return (
         <div>
+            <div className='col-12'>
+                <img className='col-12' src={pokedexImg} alt="" />
+            </div>
+            <div className='mt-3 logout-container'>
+                <Link to='/'><img className='logout-img' src={logout} alt="" /></Link>
+            </div>
             <div className='container-header'>
                 <h1>Pokedex </h1>
                 <p>Welcome <b>{user}</b>, here you can find your favorite pokemon  </p>
             </div>
 
-            <form onSubmit={search} className='input-search'>
+            <div className="form-check form-switch check-container">
+                <span className='span-check'> <b>Type </b> </span>
+
+
+                <input
+                    name='searchOption'
+                    className="form-check-input input-check"
+                    type="checkbox" role="switch"
+                    id="flexSwitchCheckDefault"
+                    checked={searchOption}
+                    onChange={e => setSearchOption(e.target.checked)}
+                >
+                </input>
+
+
+                <span className='span-check'> <b>Pokemon</b></span>
+            </div>
+
+            {searchOption ? <form onSubmit={search} className='input-search'>
                 <input
                     type="text"
                     value={pokemonSearch}
                     onChange={e => setPokemonSearch(e.target.value)}
+                    className='input-search-input input-search-md'
                 />
-                <button>Search</button>
-            </form>
-            <div className='select-container'>
+                <button className='btn btn-info'>Search</button>
+            </form> : <div className='select-container'>
                 <select
                     onChange={filterType}
-                    className='select-type'
+                    className='select-type form-select'
                 >
-                    <option value="">Select a pokemon</option>
+                    <option value="">All pokemons</option>
                     {types.map(type => (
                         <option
                             value={type.url}
@@ -84,11 +117,15 @@ const Pokedex = () => {
                     ))}
 
                 </select>
-            </div>
+            </div>}
 
-            <ul className='card-container'>
+
+
+            <ul className='card-container card-container-md'>
                 {pokemonsPagination?.map(pokemon => (
-                    <li key={pokemon.url} className='list-item' >
+                    <li
+                        key={pokemon.url ? pokemon.url : pokemon.pokemon.url}
+                        className='list-item list-item-md list-item-xl' >
                         <PokemonItem
                             pokemonUrl={pokemon.url ? pokemon.url : pokemon.pokemon.url} />
 
@@ -100,18 +137,28 @@ const Pokedex = () => {
                     <button
                         onClick={() => setPage(page - 1)}
                         disabled={page === 1}
-                        className='header-button button-xs-header'
-                    >Prev-Page </button>
+                        className='header-button button-xs-header btn btn-primary'
+                    ><img src={previousImg} alt="" /> </button>
                 </div>
-                <div>
+                <div className='btn-toolbar'>
                     {numbers.map(number => (
-                        <button
-                            className='button-page'
-                            key={number}
-                            onClick={() => setPage(number)}
-                        >
-                            {number}
-                        </button>
+                        
+                            <div className='btn-group me-2'>
+                                <button
+                                    type="button"
+                                    class="btn btn-primary mt-2"
+                                    key={number}
+                                    onClick={() => setPage(number)}
+                                >{number}</button>
+                            </div>
+                        
+                        // <button
+                        //     className='button-page'
+                        //     key={number}
+                        //     onClick={() => setPage(number)}
+                        // >
+                        //     {number}
+                        // </button>
                     ))}
                 </div>
 
@@ -121,8 +168,8 @@ const Pokedex = () => {
                     <button
                         onClick={() => setPage(page + 1)}
                         disabled={page === lastPage}
-                        className='header-button button-xs-header'
-                    >Next Page</button>
+                        className='header-button button-xs-header btn btn-primary mt-2'
+                    ><img src={nextImg} alt="" /></button>
                 </div>
 
             </div>

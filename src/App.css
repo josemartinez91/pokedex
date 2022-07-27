@@ -1,160 +1,280 @@
 /* .App {
   text-align: center;
 } */
-body{
+body {
   margin: 0;
   background-color: #fdfdfd;
+  font-family: 'Inter', sans-serif !important;
 }
+
 .bug {
   background: linear-gradient(135deg, green, rgb(8, 230, 8));
 }
+
 .dark {
-   background: linear-gradient(135deg, black, rgb(1, 1, 39));
+  background: linear-gradient(135deg, black, rgb(1, 1, 39));
 }
+
 .dragon {
-   background: linear-gradient(135deg,gold , rgb(218, 185, 0));
+  background: linear-gradient(135deg, gold, rgb(218, 185, 0));
 }
+
 .electric {
-   background: linear-gradient(135deg, yellow, orange);
+  background: linear-gradient(135deg, yellow, orange);
 }
+
 .fairy {
-   background: linear-gradient(135deg, pink, rgb(255, 78, 107));
+  background: linear-gradient(135deg, pink, rgb(255, 78, 107));
 }
+
 .fighting {
-   background: linear-gradient(135deg, rosybrown, rgb(100, 64, 64));
+  background: linear-gradient(135deg, rosybrown, rgb(100, 64, 64));
 }
+
 .fire {
   background: linear-gradient(135deg, red, yellow);
 }
+
 .flying {
-   background: linear-gradient(135deg, silver, rgb(218, 218, 218));
+  background: linear-gradient(135deg, silver, rgb(218, 218, 218));
 }
+
 .ghost {
-   background: linear-gradient(135deg, midnightblue, rgb(28, 28, 80));
+  background: linear-gradient(135deg, midnightblue, rgb(28, 28, 80));
 }
+
 .grass {
-   background: linear-gradient(135deg, rgb(107, 233, 107), rgb(8, 230, 8));
+  background: linear-gradient(135deg, rgb(107, 233, 107), rgb(8, 230, 8));
 }
+
 .ground {
-   background: linear-gradient(135deg, brown, rgb(82, 17, 17));
+  background: linear-gradient(135deg, brown, rgb(82, 17, 17));
 }
+
 .ice {
-   background: linear-gradient(135deg, rgb(73, 73, 199), rgb(62, 62, 255));
+  background: linear-gradient(135deg, rgb(73, 73, 199), rgb(62, 62, 255));
 }
+
 .normal {
-   background: linear-gradient(135deg, grey, rgb(247, 241, 241));
+  background: linear-gradient(135deg, grey, rgb(247, 241, 241));
 }
+
 .poison {
-   background: linear-gradient(135deg, rgb(0, 0, 92), rgb(16, 95, 0));
+  background: linear-gradient(135deg, rgb(0, 0, 92), rgb(16, 95, 0));
 }
+
 .psychic {
-   background: linear-gradient(135deg, yellow, gold);
+  background: linear-gradient(135deg, yellow, gold);
 }
+
 .rock {
-   background: linear-gradient(135deg, brown, rgb(112, 99, 99));
+  background: linear-gradient(135deg, brown, rgb(112, 99, 99));
 }
+
 .steel {
-   background: linear-gradient(135deg, rgb(112, 112, 112), rgb(88, 87, 87));
+  background: linear-gradient(135deg, rgb(112, 112, 112), rgb(88, 87, 87));
 }
+
 .water {
-   background: linear-gradient(135deg, blue, rgb(42, 42, 214));
+  background: linear-gradient(135deg, blue, rgb(42, 42, 214));
 }
-.container-header{
+
+/* First page, login */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+}
+
+
+/* Second page, card container */
+.container-header {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   text-align: center;
+  align-content: center;
+}
+.logout-container{
+  text-align: end;
+}
+.logout-img{
+  width: 3.5%;
+}
+.check-container{
+  display: flex;
+  justify-content: center;
+}
+.input-check{
+  margin: 1% !important;
 }
 
-.input-search{
+.span-check{
+  margin: 0 1%;
+}
+
+.input-search {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.input-search input{
-  width: 75%;
+
+.input-search-input {
+  width: 250px;
   margin-bottom: 0.5rem;
 }
-.select-container{
+
+.select-container {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
 }
-.select-type{
+
+.select-type {
   display: flex;
-  
+  width: 60%;
+  margin-bottom: 5%;
 }
-.card-container{
+
+.card-container {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   padding: 0;
+  margin-top: 5%;
 }
-.list-item{
+
+.list-item {
   display: flex;
   list-style: none;
   border-radius: 1rem;
-
-  width: 98%;
+  width: 100%;
   margin-bottom: 1rem;
+  justify-content: center;
 }
-.item-container{
-  width: 99%;
+
+.item-container {
+  width: 90%;
   display: flex;
   border-radius: 1rem;
+  color: white;
 }
-.detail-item{
+
+.detail-item {
   width: 50%;
   text-align: center;
 }
-.image-item{
+
+.image-item {
   width: 50%;
   display: flex;
   align-items: flex-end;
 }
-.image-item img{
+
+.image-item img {
   width: 100%;
 }
 
 /* Pokemon Detail css*/
 
-.image-container-detail{
+.back-image {
+  width: 10%;
+  padding-left: 5%;
+  margin-top: 5%;
+
+}
+
+.image-container-detail {
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.image-container-detail img {
   width: 100%;
 }
-.image-container-detail img{
+
+.image-container-pokemon {
   width: 100%;
 }
-.image-container-pokemon{
-  width: 100%;
+
+.image-item-detail {
+  background-color: white;
+  width: 90%;
 }
-.info-detail-container{
+
+.info-detail-container {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: center;
 }
-.info-detail-item{
+
+.container-weight {
+  display: flex;
+  width: 90%;
+  background-color: white;
+}
+
+.info-detail-item {
   width: 50%;
   flex-direction: column;
   display: flex;
   text-align: center;
+  align-items: center;
 }
-.name-container{
+
+.name-container {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   flex-direction: column;
   text-align: center;
+  margin-bottom: 1rem;
+  align-content: center;
 }
-.name-container  p::first-letter{
+
+.name-container p::first-letter {
   font-size: 150%;
 }
-.name-container p{
+
+.name-container p {
   font-size: xx-large;
   font-weight: bold;
 }
-.type-item{
-  width: 100%;
+
+.type-item {
+  width: 90%;
+
 }
-.movements-container{
+
+.type-item-type {
+  margin-bottom: 1rem;
+  background-color: white;
+}
+
+.type-item-description {
+  width: 7rem;
+  height: 2rem;
+  border-radius: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.item-ability {
+  border: 1px solid gray;
+  color: black;
+}
+
+.movements-container {
   text-align: center;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
 }
